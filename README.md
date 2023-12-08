@@ -23,3 +23,57 @@ A backend server for handling a polling application
 ## Fetching Overall Poll Analytics
 ### Route: GET /polls/analytics
 #### Fetches overall poll analytics, including total votes and option counts for all polls.
+
+
+## User Authentication API
+
+### Signup
+- **Route: POST /signup**
+  - Registers a new user.
+  - Request Body:
+    ```json
+    {
+      "userName": "JohnDoe",
+      "userEmail": "john@example.com",
+      "userPassword": "password123"
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "msg": "New user has been registered successfully"
+    }
+    ```
+
+### Login
+- **Route: POST /login**
+  - Authenticates a user and provides an access token.
+  - Request Body:
+    ```json
+    {
+      "userEmail": "john@example.com",
+      "userPassword": "password123"
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "msg": "Login successful",
+      "AccessToken": "your_access_token",
+      "username": "JohnDoe"
+    }
+    ```
+
+---
+
+### User Router Code:
+
+```javascript
+
+userRouter.post("/signup", async (req, res) => {
+    // ... Signup route logic
+});
+
+userRouter.post('/login', async (req, res) => {
+    // ... Login route logic
+});
